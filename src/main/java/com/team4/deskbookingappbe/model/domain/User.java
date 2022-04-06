@@ -1,4 +1,4 @@
-package model.domain;
+package com.team4.deskbookingappbe.model.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
