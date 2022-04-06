@@ -15,14 +15,18 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser (CreateUserRequest request){
-    User user = User.builder()
-            .firstName(request.getFirstName())
-            .lastName(request.getLastName())
-            .email(request.getEmail())
-            .password(request.getPassword()).build();
-
-    return userRepository.save(user);
+    public User createUser(CreateUserRequest request) {
+        User user = User.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .build();
+        // encryption
+        PasswordEncryptionService encryptionService = new PasswordEncryptionService();
+        String encryptedPassword = encryptionService.passwordEncryption(user.getPassword());
+        user.setPassword(encryptedPassword);
+        return userRepository.save(user);
     }
 
 
