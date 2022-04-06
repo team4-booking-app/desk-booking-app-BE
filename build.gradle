@@ -26,7 +26,7 @@ dependencies {
 
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.4'
 
-    implementation 'org.flywaydb:flyway-core'
+    implemenation 'org.flywaydb:flyway-core'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 

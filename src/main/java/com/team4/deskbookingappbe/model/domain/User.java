@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.math.BigInteger;
+import javax.persistence.*;
 
 @Data
 @Entity(name = "USER")
@@ -17,13 +14,13 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class User {
     @Id
-    @Column(name = "USERID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
 
-    @Column(name = "FIRST_NAME", nullable = false)
+    @Column(name = "FIRST_NAME", nullable = false, length = 40)
     private  String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false)
+    @Column(name = "LAST_NAME", nullable = false, length = 40)
     private  String lastName;
 
     @Column(name = "EMAIL")
