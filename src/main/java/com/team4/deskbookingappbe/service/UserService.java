@@ -28,6 +28,4 @@ public class UserService {
         user.setPassword(encryptedPassword);
         return userRepository.save(user);
     }
-
-
 }
