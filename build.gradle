@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.6'
+    id 'org.springframework.boot' version '2.4.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -26,8 +26,8 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.4'
 
     implementation 'org.flywaydb:flyway-core'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
 //    runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql:42.3.3'
