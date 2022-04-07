@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 public class CreateUserRequest {
-    //what json keys im expecting
+
     @NonNull
     @Size(min = 3, max = 30)
     @Schema(description = "User First name", example = "Karolis")

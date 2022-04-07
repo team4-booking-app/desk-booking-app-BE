@@ -32,6 +32,6 @@ public class UserController {
             content = @Content(schema = @Schema(implementation = Long.class))
     )
     public Long createUser(@Validated @RequestBody CreateUserRequest request) {
-        return userService.createUser(request).getUSER_ID();
+        return userService.createUser(request).getId();
     }
 }
