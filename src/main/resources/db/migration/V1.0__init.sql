@@ -1,9 +1,8 @@
---Swedbank demo database
---Person table
-CREATE TABLE user (
-                      USERID bigint PRIMARY KEY AUTO_INCREMENT,
-                        first_name varchar(255) not null,
-                        last_name varchar(255) not null,
-                        email varchar(255) not null,
-                        password varchar(255) not null
+CREATE TABLE IF NOT EXISTS Users (
+        id SERIAL,
+        first_name TEXT NOT NULL,
+        last_name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
+        role TEXT DEFAULT 'user'
 );

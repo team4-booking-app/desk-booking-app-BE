@@ -22,7 +22,7 @@ public class UserService {
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .build();
-        // encryption
+
         PasswordEncryptionService encryptionService = new PasswordEncryptionService();
         String encryptedPassword = encryptionService.passwordEncryption(user.getPassword());
         user.setPassword(encryptedPassword);
