@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS Users (
-                       user_id SERIAL,
-                       first_name TEXT,
-                       last_name TEXT,
-                       email TEXT,
-                       password TEXT
+                       id SERIAL,
+                       first_name TEXT NOT NULL,
+                       last_name TEXT NOT NULL,
+                       email TEXT NOT NULL,
+                       password TEXT NOT NULL,
+                       role TEXT DEFAULT 'user'
 );
