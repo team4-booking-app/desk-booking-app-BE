@@ -16,7 +16,7 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedMethods("GET","POST","PUT","DELETE")
                         .allowedHeaders("*")
-                        .allowedOrigins("https://team4-frontend-stage-app.herokuapp.com");
+                        .allowedOrigins("http://team4-frontend-stage-app.herokuapp.com");
             }
         };
     }
