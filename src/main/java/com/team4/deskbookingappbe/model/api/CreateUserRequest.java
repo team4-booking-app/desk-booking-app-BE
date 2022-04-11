@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.lang.NonNull;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -21,12 +22,12 @@ public class CreateUserRequest {
     @Schema(description = "User Last name", example = "Vaskelis")
     private String lastName;
     @NonNull
-    @Pattern(regexp = "[a-z0-9]+(?:\\.[a-z0-9]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+    @Email
     @Schema(description = "User email", example = "email@gmail.com")
     private String email;
     @NonNull
     @Size(min = 3)
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{3,}$")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{2,}$")
     @Schema(description = "User Password", example = "Test1")
     private String password;
 }
