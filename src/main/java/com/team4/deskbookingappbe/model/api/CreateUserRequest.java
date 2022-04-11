@@ -26,7 +26,7 @@ public class CreateUserRequest {
     private String email;
     @NonNull
     @Size(min = 3)
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{3,}$")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{2,}$")
     @Schema(description = "User Password", example = "Test1")
     private String password;
 }
