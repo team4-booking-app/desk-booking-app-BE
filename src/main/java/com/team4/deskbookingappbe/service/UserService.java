@@ -1,7 +1,7 @@
 package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateUserRequest;
-import com.team4.deskbookingappbe.model.domain.User;
+import com.team4.deskbookingappbe.model.domain.TEMPUser;
 import com.team4.deskbookingappbe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +15,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(CreateUserRequest request) {
-        User user = User.builder()
+    public TEMPUser createUser(CreateUserRequest request) {
+        TEMPUser user = TEMPUser.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
