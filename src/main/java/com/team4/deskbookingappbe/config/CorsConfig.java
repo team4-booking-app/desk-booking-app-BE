@@ -18,8 +18,8 @@ public class CorsConfig {
                         .allowedHeaders("*")
                         .allowedOrigins("http://team4-frontend-stage-app.herokuapp.com",
                                         "https://team4-frontend-stage-app.herokuapp.com",
-                                        "https://team4-frontend-stage-app.herokuapp.com/registration",
-                                        "http://team4-frontend-stage-app.herokuapp.com/registration");
+                                        "https://team4-frontend-stage-app.herokuapp.com/auth/registration",
+                                        "http://team4-frontend-stage-app.herokuapp.com/auth/registration");
             }
         };
     }
