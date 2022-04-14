@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS Rooms (
                        room_name TEXT UNIQUE NOT NULL
 );
 
---CREATE TABLE IF NOT EXISTS Desk (
---                       desk_id SERIAL UNIQUE,
---                       room_name TEXT REFERENCES Rooms (room_name)
---);
+CREATE TABLE IF NOT EXISTS Desk (
+                       desk_id SERIAL UNIQUE,
+                       room_name TEXT REFERENCES Rooms (room_name)
+);
 --
 --CREATE TABLE IF NOT EXISTS Reservations (
 --                       reservation_id SERIAL,
