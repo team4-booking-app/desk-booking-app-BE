@@ -1,7 +1,7 @@
 package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateUserRequest;
-import com.team4.deskbookingappbe.model.domain.TEMPUser;
+import com.team4.deskbookingappbe.model.domain.DAUser;
 
 import com.team4.deskbookingappbe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<TEMPUser> user = userRepository.findUserByEmail(email);
+        Optional<DAUser> user = userRepository.findUserByEmail(email);
         if (user.isPresent()) {
             return new User(user.get().getEmail(),user.get().getPassword(),
                     new ArrayList<>()); // for role checking later
@@ -35,8 +35,8 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
     }
 
-    public TEMPUser save(CreateUserRequest request) {
-        TEMPUser user = TEMPUser.builder()
+    public DAUser save(CreateUserRequest request) {
+        DAUser user = DAUser.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
