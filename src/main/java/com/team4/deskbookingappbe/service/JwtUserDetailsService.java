@@ -1,7 +1,7 @@
 package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateUserRequest;
-import com.team4.deskbookingappbe.model.domain.DAUser;
+import com.team4.deskbookingappbe.model.domain.DtoUser;
 
 import com.team4.deskbookingappbe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +26,17 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<DAUser> user = userRepository.findUserByEmail(email);
+        Optional<DtoUser> user = userRepository.findUserByEmail(email);
         if (user.isPresent()) {
             return new User(user.get().getEmail(),user.get().getPassword(),
-                    new ArrayList<>()); // for role checking later
+                    new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found with Email: " + email);
         }
     }
 
-    public DAUser save(CreateUserRequest request) {
-        DAUser user = DAUser.builder()
+    public DtoUser save(CreateUserRequest request) {
+        DtoUser user = DtoUser.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())

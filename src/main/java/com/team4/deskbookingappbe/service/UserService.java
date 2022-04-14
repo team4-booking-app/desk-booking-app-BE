@@ -1,7 +1,7 @@
 package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateUserRequest;
-import com.team4.deskbookingappbe.model.domain.DAUser;
+import com.team4.deskbookingappbe.model.domain.DtoUser;
 import com.team4.deskbookingappbe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,8 +19,8 @@ public class UserService {
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
-    public DAUser createUser(CreateUserRequest request) {
-        DAUser user = DAUser.builder()
+    public DtoUser createUser(CreateUserRequest request) {
+        DtoUser user = DtoUser.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
