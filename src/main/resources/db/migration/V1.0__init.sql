@@ -24,15 +24,3 @@ CREATE TABLE IF NOT EXISTS Reservations (
                        reservation_start TIMESTAMP NOT NULL,
                        reservation_end TIMESTAMP NOT NULL
 );
---
-----======================================
---
---INSERT INTO Users(first_name, last_name, email, password) VALUES ('tadas','yes','belekoks@gmail','geraspass1');
---INSERT INTO Rooms(room_name) VALUES ('room1');
---INSERT INTO Rooms(room_name) VALUES ('room2');
---
---INSERT INTO Desk(room_name) VALUES ('room1');
---INSERT INTO Desk(room_name) VALUES ('room1');
---INSERT INTO Desk(room_name) VALUES ('room2');
---
---INSERT INTO Reservations(user_email, desk_number, reservation_start, reservation_end) VALUES ('belekoks@gmail', 2, '2020-10-10 15:00:00', '2020-10-10 16:00:00');
