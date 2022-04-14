@@ -8,19 +8,20 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 CREATE TABLE IF NOT EXISTS Rooms (
-                       room_id SERIAL,
-                       room_name TEXT UNIQUE NOT NULL
+                       room_id SERIAL UNIQUE,
+                       room_name TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Desk (
                        desk_id SERIAL UNIQUE,
-                       room_name TEXT REFERENCES Rooms (room_name)
+                       desk_name TEXT NOT NULL,
+                       room_id REFERENCES Rooms (room_id)
 );
 
 CREATE TABLE IF NOT EXISTS Reservations (
                        reservation_id SERIAL,
                        user_email TEXT REFERENCES Users (email),
-                       desk_number INT REFERENCES Desk (desk_id),
+                       desk_id INT REFERENCES Desk (desk_id),
                        reservation_start TIMESTAMP NOT NULL,
                        reservation_end TIMESTAMP NOT NULL
 );
