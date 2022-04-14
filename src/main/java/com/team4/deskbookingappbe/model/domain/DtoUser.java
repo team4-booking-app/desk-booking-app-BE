@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class DtoUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

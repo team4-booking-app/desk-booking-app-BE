@@ -1,9 +1,10 @@
 package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateUserRequest;
-import com.team4.deskbookingappbe.model.domain.User;
+import com.team4.deskbookingappbe.model.domain.DtoUser;
 import com.team4.deskbookingappbe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,17 +16,17 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(CreateUserRequest request) {
-        User user = User.builder()
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
+
+    public DtoUser createUser(CreateUserRequest request) {
+        DtoUser user = DtoUser.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(bcryptEncoder.encode(request.getPassword()))
                 .build();
 
-        PasswordEncryptionService encryptionService = new PasswordEncryptionService();
-        String encryptedPassword = encryptionService.passwordEncryption(user.getPassword());
-        user.setPassword(encryptedPassword);
         return userRepository.save(user);
     }
 }

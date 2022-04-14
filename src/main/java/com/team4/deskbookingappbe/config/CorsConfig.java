@@ -16,11 +16,10 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedMethods("GET","POST","PUT","DELETE")
                         .allowedHeaders("*")
-                        .allowedOrigins("http://team4-frontend-stage-app.herokuapp.com",
-                                        "https://team4-frontend-stage-app.herokuapp.com",
-                                        "https://team4-frontend-stage-app.herokuapp.com/auth/registration",
-                                        "http://team4-frontend-stage-app.herokuapp.com/auth/registration");
+                        .allowedOrigins("*");
             }
         };
     }
 }
+
+
