@@ -22,7 +22,7 @@ public class DesksController {
         this.deskDataService = deskDataService;
     }
 
-    @PostMapping(path = "/create/desk")
+    @PostMapping(path = "/desks")
     @Operation(summary = "Create new desk")
     public Long createDesk(@Validated @RequestBody CreateDeskRequest request){
         return deskDataService.createDesk(request).getDeskId();
@@ -36,7 +36,7 @@ public class DesksController {
                 .collect(Collectors.toList());
     }
 
-    @DeleteMapping(value = "/delete/desk/{id}")
+    @DeleteMapping(value = "/desks/{id}")
     @Operation(summary = "Delete desk from database")
     public ResponseEntity<Void> deleteDesk(@PathVariable Long id){
         deskDataService.deleteDesk(id);

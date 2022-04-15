@@ -20,7 +20,7 @@ public class RoomsController {
         this.roomDataService = roomDataService;
     }
 
-    @PostMapping(path = "/create/room")
+    @PostMapping(path = "/rooms")
     @Operation(summary = "Create new room")
     public Long createDesk(@Validated @RequestBody CreateRoomRequest request){
         return roomDataService.createRoom(request).getRoomId();
@@ -34,7 +34,7 @@ public class RoomsController {
                 .collect(Collectors.toList());
     }
 
-    @DeleteMapping(value = "/delete/room/{id}")
+    @DeleteMapping(value = "/rooms/{id}")
     @Operation(summary = "Delete room from database")
     public ResponseEntity<Void> deleteRoom(@PathVariable Long id){
         roomDataService.deleteRoom(id);

@@ -21,7 +21,7 @@ public class ReservationsController {
         this.reservationsDataService = reservationsDataService;
     }
 
-    @PostMapping(path = "/create/reservation")
+    @PostMapping(path = "/reservations")
     @Operation(summary = "Create new reservation")
     public Long createDesk(@Validated @RequestBody CreateReservationsRequest request) {
         return reservationsDataService.createReservation(request).getReservationId();
@@ -35,7 +35,7 @@ public class ReservationsController {
                 .collect(Collectors.toList());
     }
 
-    @DeleteMapping(value = "/delete/reservation/{id}")
+    @DeleteMapping(value = "/reservations/{id}")
     @Operation(summary = "Delete reservation from database")
     public ResponseEntity<Void> deleteReservation(@PathVariable Long id) {
         reservationsDataService.deleteReservation(id);
