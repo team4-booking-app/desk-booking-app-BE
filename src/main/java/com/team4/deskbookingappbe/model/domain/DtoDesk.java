@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class dtoDESK {
+public class DtoDesk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long deskId;
@@ -20,5 +20,5 @@ public class dtoDESK {
     private String deskName;
 
     @Column(name = "ROOM_ID")
-    private Integer roomId;
+    private Long roomId;
 }

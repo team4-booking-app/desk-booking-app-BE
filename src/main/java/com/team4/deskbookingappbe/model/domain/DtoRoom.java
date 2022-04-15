@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class dtoROOM {
+public class DtoRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomId;

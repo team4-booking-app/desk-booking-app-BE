@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class dtoRESERVATIONS {
+public class DtoReservations {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
@@ -22,7 +22,7 @@ public class dtoRESERVATIONS {
     private String userEmail;
 
     @Column(name = "DESK_ID")
-    private Integer deskId;
+    private Long deskId;
 
     @Column(name = "RESERVATION_START")
     private Timestamp reservationStart;
