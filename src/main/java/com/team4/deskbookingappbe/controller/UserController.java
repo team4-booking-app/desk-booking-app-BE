@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "api/v1/registration")
+@RequestMapping(path = "api/v1")
 public class UserController {
 
     private final UserService userService;
@@ -25,7 +25,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping(path = "/registration")
     @Operation(summary = "Create new instance in DB")
     @ApiResponse(
             responseCode = "201",
@@ -35,7 +35,7 @@ public class UserController {
     public Long createUser(@Validated @RequestBody CreateUserRequest request) {
         return userService.createUser(request).getId();
     }
-    @GetMapping(value = "/api/v1/users")
+    @GetMapping(value = "/users")
     public List<UserResponse> fetchUsers(@RequestParam(required = false) String email) {
         return userService.fetchUsers(email).stream()
                 .map(p -> new UserResponse(p.getFirstName(), p.getLastName(), p.getEmail(), p.getPassword()))
