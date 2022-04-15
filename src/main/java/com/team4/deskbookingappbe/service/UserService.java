@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -28,5 +30,15 @@ public class UserService {
                 .build();
 
         return userRepository.save(user);
+    }
+    public List<DtoUser> fetchUsers(String email) {
+        if(email != null)
+        {
+            return userRepository.findAllByEmail(email);
+        }
+        else
+        {
+            return userRepository.findAll();
+        }
     }
 }
