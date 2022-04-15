@@ -1,23 +1,16 @@
 package com.team4.deskbookingappbe.controller;
 
 import com.team4.deskbookingappbe.model.api.*;
-import com.team4.deskbookingappbe.model.domain.DtoDesk;
 import com.team4.deskbookingappbe.service.DeskDataService;
 import com.team4.deskbookingappbe.service.ReservationsDataService;
 import com.team4.deskbookingappbe.service.RoomDataService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
