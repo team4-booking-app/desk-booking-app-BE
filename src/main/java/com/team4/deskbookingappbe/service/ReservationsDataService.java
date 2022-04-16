@@ -2,12 +2,14 @@ package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateReservationsRequest;
 import com.team4.deskbookingappbe.model.domain.DtoReservations;
-import com.team4.deskbookingappbe.model.domain.DtoRoom;
 import com.team4.deskbookingappbe.repository.ReservationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationsDataService {
@@ -30,8 +32,22 @@ public class ReservationsDataService {
         return reservationsRepository.save(reservation);
     }
 
-    public List<DtoReservations> fetchReservations(Long id){
-        return reservationsRepository.findAll();
+    public List<DtoReservations> fetchReservations(Long reservationId, String userEmail, Long deskId, Timestamp reservationStart, Timestamp reservationEnd){
+        if(reservationId != null){
+            return this.reservationsRepository.findAllByReservationId(reservationId);
+        }
+        else if(userEmail != null){
+            return this.reservationsRepository.findAllByUserEmail(userEmail);
+        }
+        else if(deskId != null){
+            return this.reservationsRepository.findAllByDeskId(deskId);
+        }
+        else if(reservationStart != null && reservationStart != null){
+            return this.reservationsRepository.findAllByReservationStartBetween(reservationStart,reservationEnd);
+        }
+        else{
+            return this.reservationsRepository.findAll();
+        }
     }
 
     public void deleteReservation(Long id){
