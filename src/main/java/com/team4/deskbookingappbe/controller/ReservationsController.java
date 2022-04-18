@@ -35,10 +35,10 @@ public class ReservationsController {
     public List<ReservationsResponse> fetchReservations(@RequestParam(required = false) Long reservationId,
                                                         @RequestParam(required = false) String userEmail,
                                                         @RequestParam(required = false) Long deskId,
-                                                        @RequestParam(required = false) Timestamp reservationStart,
-                                                        @RequestParam(required = false) Timestamp reservationEnd) {
+                                                        @RequestParam(required = false) String reservationStart,
+                                                        @RequestParam(required = false) String reservationEnd) {
         List<ReservationsResponse> reservations = reservationsDataService.fetchReservations(reservationId, userEmail, deskId, reservationStart, reservationEnd).stream()
-                    .map(reservation -> new ReservationsResponse(reservation.getReservationId(), reservation.getUserEmail(), reservation.getDeskId(), reservation.getReservationStart(), reservation.getReservationEnd()))
+                    .map(reservation -> new ReservationsResponse(reservation.getReservationId(), reservation.getUserEmail(), reservation.getDeskId(), reservation.getReservationStart().toString().substring(0,19), reservation.getReservationEnd().toString().substring(0,19)))
                     .collect(Collectors.toList());
         if(reservations.isEmpty()) {
             throw new ResponseStatusException(
@@ -52,7 +52,7 @@ public class ReservationsController {
 
     @DeleteMapping(value = "/reservations")
     @Operation(summary = "Delete reservation from database")
-    public ResponseEntity<Void> deleteReservation(@RequestParam(required = false) Long reservationId) {
+    public ResponseEntity<Void> deleteReservation(Long reservationId) {
         reservationsDataService.deleteReservation(reservationId);
         return ResponseEntity.noContent().build();
     }

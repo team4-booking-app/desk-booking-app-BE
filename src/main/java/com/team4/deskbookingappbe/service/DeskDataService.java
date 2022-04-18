@@ -27,8 +27,13 @@ public class DeskDataService {
         return deskRepository.save(desk);
     }
 
-    public List<DtoDesk> fetchDesks(Long id){
-        return deskRepository.findAll();
+    public List<DtoDesk> fetchDesks(Long deskId){
+        if(deskId != null){
+            return this.deskRepository.findAllByDeskId(deskId);
+        }
+        else {
+            return deskRepository.findAll();
+        }
     }
 
     public void deleteDesk(Long id){

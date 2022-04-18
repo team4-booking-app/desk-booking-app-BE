@@ -18,8 +18,8 @@ public class CreateReservationsRequest {
     private Long deskId;
     @NonNull
     @Schema(description = "Reservation start", example = "2022-04-20 15:00:00")
-    private Timestamp reservationStart;
+    private String reservationStart;
     @NonNull
     @Schema(description = "Reservation end", example = "2022-04-20 16:00:00")
-    private Timestamp reservationEnd;
+    private String reservationEnd;
 }

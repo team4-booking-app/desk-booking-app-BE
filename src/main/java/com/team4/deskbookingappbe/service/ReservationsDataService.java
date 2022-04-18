@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReservationsDataService {
@@ -25,14 +23,14 @@ public class ReservationsDataService {
         DtoReservations reservation = DtoReservations.builder()
                 .userEmail(request.getUserEmail())
                 .deskId(request.getDeskId())
-                .reservationStart(request.getReservationStart())
-                .reservationEnd(request.getReservationEnd())
+                .reservationStart(Timestamp.valueOf(request.getReservationStart()))
+                .reservationEnd(Timestamp.valueOf(request.getReservationEnd()))
                 .build();
 
         return reservationsRepository.save(reservation);
     }
 
-    public List<DtoReservations> fetchReservations(Long reservationId, String userEmail, Long deskId, Timestamp reservationStart, Timestamp reservationEnd){
+    public List<DtoReservations> fetchReservations(Long reservationId, String userEmail, Long deskId, String reservationStart, String reservationEnd){
         if(reservationId != null){
             return this.reservationsRepository.findAllByReservationId(reservationId);
         }
@@ -43,7 +41,7 @@ public class ReservationsDataService {
             return this.reservationsRepository.findAllByDeskId(deskId);
         }
         else if(reservationStart != null && reservationStart != null){
-            return this.reservationsRepository.findAllByReservationStartBetween(reservationStart,reservationEnd);
+            return this.reservationsRepository.FindAllByReservationsTimestamp(reservationStart,reservationEnd);
         }
         else{
             return this.reservationsRepository.findAll();

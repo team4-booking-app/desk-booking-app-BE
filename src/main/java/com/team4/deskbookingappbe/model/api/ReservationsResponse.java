@@ -16,7 +16,7 @@ public class ReservationsResponse {
     @Schema(description = "Desk room id", example = "1")
     private Long deskId;
     @Schema(description = "Reservation start", example = "2022-04-20 15:00:00")
-    private Timestamp reservationStart;
+    private String reservationStart;
     @Schema(description = "Reservation end", example = "2022-04-20 16:00:00")
-    private Timestamp reservationEnd;
+    private String reservationEnd;
 }

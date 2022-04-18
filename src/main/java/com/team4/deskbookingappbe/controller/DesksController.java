@@ -5,9 +5,11 @@ import com.team4.deskbookingappbe.model.api.DeskResponse;
 import com.team4.deskbookingappbe.service.DeskDataService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,15 +32,21 @@ public class DesksController {
 
     @GetMapping(value = "/desks")
     @Operation(summary = "Get all desks list from database")
-    public List<DeskResponse> fetchDesks(@RequestParam(required = false) Long id){
-        return deskDataService.fetchDesks(id).stream()
+    public List<DeskResponse> fetchDesks(@RequestParam(required = false) Long deskId){
+        List<DeskResponse> desks = deskDataService.fetchDesks(deskId).stream()
                 .map(desk -> new DeskResponse(desk.getDeskId(),desk.getDeskName(),desk.getRoomId()))
                 .collect(Collectors.toList());
+        if(desks.isEmpty()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Desk not found with requested id"
+            );
+        }
+        return desks;
     }
 
     @DeleteMapping(value = "/desks/{id}")
     @Operation(summary = "Delete desk from database")
-    public ResponseEntity<Void> deleteDesk(@PathVariable Long id){
+    public ResponseEntity<Void> deleteDesk(Long id){
         deskDataService.deleteDesk(id);
         return ResponseEntity.noContent().build();
     }

@@ -26,8 +26,13 @@ public class RoomDataService {
         return roomRepository.save(room);
     }
 
-    public List<DtoRoom> fetchRooms(Long id){
-        return roomRepository.findAll();
+    public List<DtoRoom> fetchRooms(Long roomId){
+        if(roomId != null){
+            return roomRepository.findAllByRoomId(roomId);
+        }
+        else {
+            return roomRepository.findAll();
+        }
     }
 
     public void deleteRoom(Long id){
