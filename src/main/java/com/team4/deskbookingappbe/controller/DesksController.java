@@ -2,7 +2,7 @@ package com.team4.deskbookingappbe.controller;
 
 import com.team4.deskbookingappbe.model.api.CreateDeskRequest;
 import com.team4.deskbookingappbe.model.api.DeskResponse;
-import com.team4.deskbookingappbe.service.DeskDataService;
+import com.team4.deskbookingappbe.service.DeskService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,23 +17,23 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(path = "api/v1")
 public class DesksController {
-    private final DeskDataService deskDataService;
+    private final DeskService deskService;
 
     @Autowired
-    public DesksController(DeskDataService deskDataService) {
-        this.deskDataService = deskDataService;
+    public DesksController(DeskService deskService) {
+        this.deskService = deskService;
     }
 
     @PostMapping(path = "/desks")
     @Operation(summary = "Create new desk")
     public Long createDesk(@Validated @RequestBody CreateDeskRequest request){
-        return deskDataService.createDesk(request).getDeskId();
+        return deskService.createDesk(request).getDeskId();
     }
 
     @GetMapping(value = "/desks")
     @Operation(summary = "Get all desks list from database")
     public List<DeskResponse> fetchDesks(@RequestParam(required = false) Long deskId){
-        List<DeskResponse> desks = deskDataService.fetchDesks(deskId).stream()
+        List<DeskResponse> desks = deskService.fetchDesks(deskId).stream()
                 .map(desk -> new DeskResponse(desk.getDeskId(),desk.getDeskName(),desk.getRoomId()))
                 .collect(Collectors.toList());
         if(desks.isEmpty()) {
@@ -47,7 +47,7 @@ public class DesksController {
     @DeleteMapping(value = "/desks/{deskId}")
     @Operation(summary = "Delete desk from database")
     public ResponseEntity<Void> deleteDesk(@PathVariable Long deskId){
-        deskDataService.deleteDesk(deskId);
+        deskService.deleteDesk(deskId);
         return ResponseEntity.noContent().build();
     }
 }

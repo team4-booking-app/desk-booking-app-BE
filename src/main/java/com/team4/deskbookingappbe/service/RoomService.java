@@ -1,7 +1,6 @@
 package com.team4.deskbookingappbe.service;
 
 import com.team4.deskbookingappbe.model.api.CreateRoomRequest;
-import com.team4.deskbookingappbe.model.domain.DtoDesk;
 import com.team4.deskbookingappbe.model.domain.DtoRoom;
 import com.team4.deskbookingappbe.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RoomDataService {
+public class RoomService {
     private final RoomRepository roomRepository;
 
     @Autowired
-    public RoomDataService(RoomRepository roomRepository) {
+    public RoomService(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
 

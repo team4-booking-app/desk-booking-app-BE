@@ -10,12 +10,12 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Service
-public class ReservationsDataService {
+public class ReservationsService {
 
     private final ReservationsRepository reservationsRepository;
 
     @Autowired
-    public ReservationsDataService(ReservationsRepository reservationsRepository) {
+    public ReservationsService(ReservationsRepository reservationsRepository) {
         this.reservationsRepository = reservationsRepository;
     }
 

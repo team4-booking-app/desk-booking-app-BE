@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DeskDataService {
+public class DeskService {
 
     private final DeskRepository deskRepository;
 
     @Autowired
-    public DeskDataService(DeskRepository deskRepository) {
+    public DeskService(DeskRepository deskRepository) {
         this.deskRepository = deskRepository;
     }
 

@@ -3,9 +3,8 @@ package com.team4.deskbookingappbe.model.api;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.lang.NonNull;
+import lombok.NonNull;
 
-import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
