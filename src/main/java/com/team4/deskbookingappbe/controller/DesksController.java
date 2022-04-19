@@ -44,10 +44,10 @@ public class DesksController {
         return desks;
     }
 
-    @DeleteMapping(value = "/desks/{id}")
+    @DeleteMapping(value = "/desks/{deskId}")
     @Operation(summary = "Delete desk from database")
-    public ResponseEntity<Void> deleteDesk(Long id){
-        deskDataService.deleteDesk(id);
+    public ResponseEntity<Void> deleteDesk(@PathVariable Long deskId){
+        deskDataService.deleteDesk(deskId);
         return ResponseEntity.noContent().build();
     }
 }

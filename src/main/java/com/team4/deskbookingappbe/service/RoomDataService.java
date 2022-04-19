@@ -35,7 +35,7 @@ public class RoomDataService {
         }
     }
 
-    public void deleteRoom(Long id){
-        roomRepository.deleteById(id);
+    public void deleteRoom(Long roomId){
+        roomRepository.deleteById(roomId);
     }
 }

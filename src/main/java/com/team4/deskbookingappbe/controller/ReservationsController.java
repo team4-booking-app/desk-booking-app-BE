@@ -50,9 +50,9 @@ public class ReservationsController {
         }
     }
 
-    @DeleteMapping(value = "/reservations")
+    @DeleteMapping(value = "/reservations/{reservationId}")
     @Operation(summary = "Delete reservation from database")
-    public ResponseEntity<Void> deleteReservation(Long reservationId) {
+    public ResponseEntity<Void> deleteReservation(@PathVariable Long reservationId) {
         reservationsDataService.deleteReservation(reservationId);
         return ResponseEntity.noContent().build();
     }

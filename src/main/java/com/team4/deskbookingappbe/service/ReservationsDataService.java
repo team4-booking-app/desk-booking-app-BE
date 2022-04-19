@@ -48,7 +48,7 @@ public class ReservationsDataService {
         }
     }
 
-    public void deleteReservation(Long id){
-        reservationsRepository.deleteById(id);
+    public void deleteReservation(Long reservationId){
+        reservationsRepository.deleteById(reservationId);
     }
 }

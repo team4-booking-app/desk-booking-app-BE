@@ -42,9 +42,9 @@ public class RoomsController {
         return rooms;
     }
 
-    @DeleteMapping(value = "/rooms/{id}")
+    @DeleteMapping(value = "/rooms/{roomId}")
     @Operation(summary = "Delete room from database")
-    public ResponseEntity<Void> deleteRoom(Long roomId){
+    public ResponseEntity<Void> deleteRoom(@PathVariable Long roomId){
         roomDataService.deleteRoom(roomId);
         return ResponseEntity.noContent().build();
     }

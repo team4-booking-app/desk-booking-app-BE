@@ -36,7 +36,7 @@ public class DeskDataService {
         }
     }
 
-    public void deleteDesk(Long id){
-        deskRepository.deleteById(id);
+    public void deleteDesk(Long deskId){
+        deskRepository.deleteById(deskId);
     }
 }
