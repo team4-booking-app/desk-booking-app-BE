@@ -41,7 +41,7 @@ public class ReservationsService {
             return this.reservationsRepository.findAllByDeskId(deskId);
         }
         else if(reservationStart != null && reservationStart != null){
-            return this.reservationsRepository.FindAllByReservationsTimestamp(reservationStart,reservationEnd);
+            return this.reservationsRepository.FindAllByReservationStartAndReservationEndWhereIntersectsBetween(reservationStart,reservationEnd);
         }
         else{
             return this.reservationsRepository.findAll();
