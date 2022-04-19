@@ -2,11 +2,12 @@ package com.team4.deskbookingappbe.model.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@lombok.Data
+@Data
 @Entity(name = "DESK")
 @Builder
 @NoArgsConstructor
