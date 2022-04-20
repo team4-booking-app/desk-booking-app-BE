@@ -18,5 +18,5 @@ public interface ReservationsRepository extends JpaRepository<DtoReservations,Lo
             "where CAST(:reservationStart as timestamp without time zone) between reservation_start and reservation_end " +
             "or CAST(:reservationEnd as timestamp without time zone) between reservation_start and reservation_end",
     nativeQuery = true)
-    List<DtoReservations> FindAllByReservationStartAndReservationEndWhereIntersectsBetween(String reservationStart, String reservationEnd);
+    List<DtoReservations> findAllByReservationStartAndReservationEndWhereIntersectsBetween(String reservationStart, String reservationEnd);
 }
