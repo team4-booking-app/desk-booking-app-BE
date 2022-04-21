@@ -7,6 +7,7 @@ import com.team4.deskbookingappbe.service.ReservationsService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
@@ -27,7 +28,8 @@ public class DeskAvailabilityController {
 
     @GetMapping(path = "desks/available")
     @Operation(summary = "Returns available desks from given time interval")
-    public List<DtoDesk> fetchAllAvailableDesks(String reservationStart, String reservationEnd) {
+    public List<DtoDesk> fetchAllAvailableDesks(@RequestParam(required = true) String reservationStart,
+                                                @RequestParam(required = true) String reservationEnd) {
 
         List<DtoReservations> reservations = reservationsService.fetchReservations(null, null, null, reservationStart, reservationEnd);
         List<DtoDesk> availableDesks = deskService.fetchDesks(null);
