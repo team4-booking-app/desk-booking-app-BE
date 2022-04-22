@@ -24,6 +24,9 @@ public class DtoReservations {
     @Column(name = "DESK_ID")
     private Long deskId;
 
+    @Column(name = "ROOM_ID")
+    private Long roomId;
+
     @Column(name = "RESERVATION_START")
     private Timestamp reservationStart;
 

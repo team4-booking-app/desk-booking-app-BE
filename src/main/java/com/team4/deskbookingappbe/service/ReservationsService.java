@@ -23,6 +23,7 @@ public class ReservationsService {
         DtoReservations reservation = DtoReservations.builder()
                 .userEmail(request.getUserEmail())
                 .deskId(request.getDeskId())
+                .roomId(request.getRoomId())
                 .reservationStart(Timestamp.valueOf(request.getReservationStart()))
                 .reservationEnd(Timestamp.valueOf(request.getReservationEnd()))
                 .build();
@@ -30,7 +31,7 @@ public class ReservationsService {
         return reservationsRepository.save(reservation);
     }
 
-    public List<DtoReservations> fetchReservations(Long reservationId, String userEmail, Long deskId, String reservationStart, String reservationEnd){
+    public List<DtoReservations> fetchReservations(Long reservationId, String userEmail, Long deskId, Long roomId, String reservationStart, String reservationEnd){
         if(reservationId != null){
             return this.reservationsRepository.findAllByReservationId(reservationId);
         }
@@ -39,6 +40,9 @@ public class ReservationsService {
         }
         else if(deskId != null){
             return this.reservationsRepository.findAllByDeskId(deskId);
+        }
+        else if(roomId != null){
+            return this.reservationsRepository.findAllByRoomId(roomId);
         }
         else if(reservationStart != null && reservationStart != null){
             return this.reservationsRepository.findAllByReservationStartAndReservationEndWhereIntersectsBetween(reservationStart,reservationEnd);

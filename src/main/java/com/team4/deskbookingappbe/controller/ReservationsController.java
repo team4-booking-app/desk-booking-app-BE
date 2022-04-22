@@ -34,14 +34,15 @@ public class ReservationsController {
     public List<ReservationsResponse> fetchReservations(@RequestParam(required = false) Long reservationId,
                                                         @RequestParam(required = false) String userEmail,
                                                         @RequestParam(required = false) Long deskId,
+                                                        @RequestParam(required = false) Long roomId,
                                                         @RequestParam(required = false) String reservationStart,
                                                         @RequestParam(required = false) String reservationEnd) {
-        List<ReservationsResponse> reservations = reservationsService.fetchReservations(reservationId, userEmail, deskId, reservationStart, reservationEnd).stream()
-                    .map(reservation -> new ReservationsResponse(reservation.getReservationId(), reservation.getUserEmail(), reservation.getDeskId(), reservation.getReservationStart().toString().substring(0,19), reservation.getReservationEnd().toString().substring(0,19)))
+        List<ReservationsResponse> reservations = reservationsService.fetchReservations(reservationId, userEmail, deskId, roomId, reservationStart, reservationEnd).stream()
+                    .map(reservation -> new ReservationsResponse(reservation.getReservationId(), reservation.getUserEmail(), reservation.getDeskId(), reservation.getRoomId(), reservation.getReservationStart().toString().substring(0,19), reservation.getReservationEnd().toString().substring(0,19)))
                     .collect(Collectors.toList());
         if(reservations.isEmpty()) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Reservation not found with requested id, email, desk id or reservations between start and end time"
+                    HttpStatus.NOT_FOUND, "Reservation not found with requested id, email, desk id, room id, reservations between start and end time"
             );
         }
         else {

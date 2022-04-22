@@ -16,6 +16,9 @@ public class CreateReservationsRequest {
     @Schema(description = "Desk room id", example = "1")
     private Long deskId;
     @NonNull
+    @Schema(description = "Room id", example = "3")
+    private Long roomId;
+    @NonNull
     @Schema(description = "Reservation start", example = "2022-04-20 15:00:00")
     private String reservationStart;
     @NonNull

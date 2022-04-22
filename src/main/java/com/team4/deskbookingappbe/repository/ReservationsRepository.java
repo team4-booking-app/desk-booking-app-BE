@@ -13,6 +13,7 @@ public interface ReservationsRepository extends JpaRepository<DtoReservations,Lo
     List<DtoReservations> findAllByReservationId (Long reservationId);
     List<DtoReservations> findAllByUserEmail (String userEmail);
     List<DtoReservations> findAllByDeskId (Long deskId);
+    List<DtoReservations> findAllByRoomId (Long roomId);
 
     @Query(value = "select * from RESERVATIONS " +
             "where CAST(:reservationStart as timestamp without time zone) between reservation_start and reservation_end " +
