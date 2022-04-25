@@ -9,11 +9,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Data
-@Entity(name = "RESERVATIONS")
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DtoReservations {
+public class DtoBooking {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
@@ -24,10 +25,18 @@ public class DtoReservations {
     @Column(name = "DESK_ID")
     private Long deskId;
 
+    @Column(name = "DESK_NAME")
+    private String deskName;
+
+    @Column(name = "ROOM_ID")
+    private Long roomId;
+
+    @Column(name = "ROOM_NAME")
+    private String roomName;
+
     @Column(name = "RESERVATION_START")
     private Timestamp reservationStart;
 
     @Column(name = "RESERVATION_END")
     private Timestamp reservationEnd;
-
 }
