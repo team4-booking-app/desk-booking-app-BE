@@ -13,8 +13,7 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DtoReservations {
-    @Id
+public class DtoReservations {@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
 
@@ -29,4 +28,5 @@ public class DtoReservations {
 
     @Column(name = "RESERVATION_END")
     private Timestamp reservationEnd;
+
 }

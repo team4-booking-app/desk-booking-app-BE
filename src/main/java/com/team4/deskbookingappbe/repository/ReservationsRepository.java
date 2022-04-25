@@ -9,14 +9,18 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
-public interface ReservationsRepository extends JpaRepository<DtoReservations,Long> {
-    List<DtoReservations> findAllByReservationId (Long reservationId);
-    List<DtoReservations> findAllByUserEmail (String userEmail);
-    List<DtoReservations> findAllByDeskId (Long deskId);
+public interface ReservationsRepository extends JpaRepository<DtoReservations, Long> {
+    List<DtoReservations> findAllByReservationId(Long reservationId);
+
+    List<DtoReservations> findAllByDeskId(Long deskId);
+
+    List<DtoReservations> findAllByUserEmail(String userEmail);
 
     @Query(value = "select * from RESERVATIONS " +
             "where CAST(:reservationStart as timestamp without time zone) between reservation_start and reservation_end " +
             "or CAST(:reservationEnd as timestamp without time zone) between reservation_start and reservation_end",
-    nativeQuery = true)
+            nativeQuery = true)
     List<DtoReservations> findAllByReservationStartAndReservationEndWhereIntersectsBetween(String reservationStart, String reservationEnd);
+
+
 }
