@@ -16,9 +16,18 @@ public interface ReservationsRepository extends JpaRepository<DtoReservations, L
 
     List<DtoReservations> findAllByUserEmail(String userEmail);
 
-    @Query(value = "select * from RESERVATIONS " +
-            "where CAST(:reservationStart as timestamp without time zone) between reservation_start and reservation_end " +
-            "or CAST(:reservationEnd as timestamp without time zone) between reservation_start and reservation_end",
+    @Query(value = "SELECT * FROM RESERVATIONS " +
+            "WHERE (" +
+            "(CAST(:reservationStart AS timestamp without time zone) BETWEEN reservation_start AND reservation_end)" +
+            "OR" +
+            "(CAST(:reservationEnd AS timestamp without time zone) BETWEEN reservation_start AND reservation_end)" +
+            ")" +
+            "OR" +
+            "(" +
+            "(reservation_start BETWEEN CAST(:reservationStart AS timestamp without time zone) AND CAST(:reservationEnd AS timestamp without time zone))" +
+            "OR" +
+            "(reservation_end BETWEEN CAST(:reservationStart AS timestamp without time zone) AND CAST(:reservationEnd AS timestamp without time zone))" +
+            ")",
             nativeQuery = true)
     List<DtoReservations> findAllByReservationStartAndReservationEndWhereIntersectsBetween(String reservationStart, String reservationEnd);
 
