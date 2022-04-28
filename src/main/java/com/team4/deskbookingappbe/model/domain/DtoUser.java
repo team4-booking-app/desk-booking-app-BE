@@ -30,4 +30,5 @@ public class DtoUser {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+
 }
